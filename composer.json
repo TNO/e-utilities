@@ -1,0 +1,21 @@
+{
+    "name": "larsnieuwenhuizen/e-utilities",
+    "description": "Php library for communication with the NCBI E-Utilities library",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "license": "GNU General Public License v3.0",
+    "authors": [
+        {
+            "name": "Lars Nieuwenhuizen",
+            "email": "l.nieuwenhuizen@developers.nl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "LarsNieuwenhuizen\\EUtilities\\": "src/"
+        }
+    }
+}
