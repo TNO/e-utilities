@@ -1,0 +1,128 @@
+<?php
+
+namespace LarsNieuwenhuizen\EUtilities\Esearch;
+
+class Term
+{
+
+    /** @var string */
+    const AND_CLAUSE = 'AND';
+
+    /** @var string */
+    const OR_CLAUSE = 'OR';
+
+    /**
+     * Defines if this term is an AND or OR term
+     *
+     * @var string
+     */
+    protected $clauseType;
+
+    /**
+     * @var string
+     */
+    protected $term;
+
+    /**
+     * @var array
+     */
+    protected $columns;
+
+    /**
+     * Term constructor.
+     *
+     * @param string $clauseType
+     * @param string $term
+     * @param array $columns
+     * @throws \Exception
+     */
+    public function __construct(string $term, array $columns, string $clauseType = 'AND')
+    {
+        $this->setClauseType($clauseType);
+        $this->setTerm($term);
+        $this->setColumns($columns);
+    }
+
+    /**
+     * @return string
+     */
+    public function getClauseType(): string
+    {
+        return $this->clauseType;
+    }
+
+    /**
+     * @param string $clauseType
+     * @return Term
+     * @throws \Exception
+     */
+    public function setClauseType(string $clauseType): Term
+    {
+        if ($clauseType === self::AND_CLAUSE || $clauseType === self::OR_CLAUSE) {
+            $this->clauseType = $clauseType;
+
+            return $this;
+        }
+
+        throw new \Exception('Term clause not correct');
+    }
+
+    /**
+     * @return string
+     */
+    public function getTerm(): string
+    {
+        return $this->term;
+    }
+
+    /**
+     * @param string $term
+     * @return Term
+     */
+    public function setTerm(string $term): Term
+    {
+        $this->term = $term;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getColumns(): array
+    {
+        return $this->columns;
+    }
+
+    /**
+     * @param array $columns
+     * @return Term
+     */
+    public function setColumns(array $columns): Term
+    {
+        $this->columns = $columns;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $columnString = '[';
+        $columns = $this->getColumns();
+
+        foreach ($columns as $column) {
+            $columnString .= $column;
+
+            if ($column !== end($columns)) {
+                $columnString .= '/';
+            }
+        }
+
+        $columnString .= ']';
+
+        return '+' . $this->getClauseType() . '+' . $this->getTerm() . $columnString;
+    }
+}
