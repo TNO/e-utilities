@@ -34,13 +34,16 @@ class Term
      * @param string $clauseType
      * @param string $term
      * @param array $columns
-     * @throws \Exception
      */
     public function __construct(string $term, array $columns, string $clauseType = 'AND')
     {
-        $this->setClauseType($clauseType);
-        $this->setTerm($term);
-        $this->setColumns($columns);
+        try {
+            $this->setClauseType($clauseType);
+            $this->setTerm($term);
+            $this->setColumns($columns);
+        } catch (\Exception $exception) {
+            return 'Term could not be constructed because: ' . $exception->getMessage();
+        }
     }
 
     /**
