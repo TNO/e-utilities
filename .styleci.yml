@@ -1,0 +1,15 @@
+preset: psr2
+
+enabled:
+  - strict
+  - concat_with_spaces
+
+finder:
+  exclude:
+    - "tests"
+  name:
+    - "*.php"
+  not-name:
+    - "*Test.php"
+  path:
+    - "app"
