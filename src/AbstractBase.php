@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace LarsNieuwenhuizen\EUtilities;
 
@@ -34,7 +35,7 @@ abstract class AbstractBase
     /**
      * @return string
      */
-    public function getBaseUrl()
+    public function getBaseUrl(): string
     {
         return $this->baseUrl;
     }
@@ -53,7 +54,7 @@ abstract class AbstractBase
     /**
      * @return string
      */
-    public function getUrlPath()
+    public function getUrlPath(): string
     {
         return $this->urlPath;
     }
