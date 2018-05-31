@@ -32,14 +32,11 @@ class ESearch extends AbstractBase
             '?db=' . $this->getDatabase() .
             '&term=' . $query->getQueryString() .
             '&retmode=' . $this->getReturnMode();
-
         $result = $this->getHttpClient()->get($requestUri)
             ->getBody()
             ->getContents();
 
-        if ($this->getReturnMode() === 'json') {
-            return json_decode($result);
-        }
+        return $result;
     }
 
     /**
