@@ -1,8 +1,9 @@
 {
     "name": "larsnieuwenhuizen/e-utilities",
-    "description": "Php library for communication with the NCBI E-Utilities library",
+    "description": "Php library for communication with the NCBI E-Utilities api",
     "type": "library",
     "require": {
+        "php": ">=7.1.0",
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
