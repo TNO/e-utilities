@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace LarsNieuwenhuizen\EUtilities\Esearch;
 
-class Query
+use LarsNieuwenhuizen\EUtilities\Interfaces;
+
+class Query implements Interfaces\Query
 {
 
     /**
@@ -43,7 +45,7 @@ class Query
     /**
      * @return string
      */
-    public function getQueryString()
+    public function getQueryString(): string
     {
         $terms = $this->getTerms();
         $termString = '';

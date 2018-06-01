@@ -114,18 +114,22 @@ class Term
      */
     public function __toString()
     {
-        $columnString = '[';
+        $columnString = '';
         $columns = $this->getColumns();
 
-        foreach ($columns as $column) {
-            $columnString .= $column;
+        if (count($columns) > 0) {
+            $columnString .= '%5b';
 
-            if ($column !== end($columns)) {
-                $columnString .= '/';
+            foreach ($columns as $column) {
+                $columnString .= $column;
+
+                if ($column !== end($columns)) {
+                    $columnString .= '/';
+                }
             }
-        }
 
-        $columnString .= ']';
+            $columnString .= '%5d';
+        }
 
         return '+' . $this->getClauseType() . '+' . $this->getTerm() . $columnString;
     }

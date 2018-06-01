@@ -3,12 +3,11 @@ declare(strict_types=1);
 
 namespace LarsNieuwenhuizen\EUtilities\Interfaces;
 
-interface EUtility
+interface Query
 {
 
     /**
-     * @param Query $query
      * @return string
      */
-    public function execute(Query $query): string;
+    public function getQueryString(): string;
 }
