@@ -58,6 +58,6 @@ class QueryTest extends TestCase
         $this->subject->addTerm($term2);
         $this->subject->addTerm($term3);
         $queryString = $this->subject->getQueryString();
-        $this->assertEquals('Hello world[]+AND+Hello universe[]+OR+Hello multiverse[first/second]', $queryString);
+        $this->assertEquals('Hello world+AND+Hello universe+OR+Hello multiverse%5bfirst/second%5d', $queryString);
     }
 }
