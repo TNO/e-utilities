@@ -6,7 +6,7 @@ namespace LarsNieuwenhuizen\EUtilities;
 use GuzzleHttp\Client;
 use LarsNieuwenhuizen\EUtilities\Interfaces\EUtility;
 
-abstract class AbstractBase
+abstract class AbstractBase implements EUtility
 {
 
     /**
@@ -48,7 +48,7 @@ abstract class AbstractBase
 
     /**
      * @param string $baseUrl
-     * @return AbstractBase
+     * @return EUtility
      */
     public function setBaseUrl($baseUrl): EUtility
     {
@@ -67,7 +67,7 @@ abstract class AbstractBase
 
     /**
      * @param string $urlPath
-     * @return AbstractBase
+     * @return EUtility
      */
     public function setUrlPath($urlPath): EUtility
     {
@@ -86,7 +86,7 @@ abstract class AbstractBase
 
     /**
      * @param Client $httpClient
-     * @return AbstractBase
+     * @return EUtility
      */
     public function setHttpClient(Client $httpClient): EUtility
     {

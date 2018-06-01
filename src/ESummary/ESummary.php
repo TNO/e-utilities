@@ -1,0 +1,116 @@
+<?php
+declare(strict_types=1);
+
+namespace LarsNieuwenhuizen\EUtilities\ESummary;
+
+use LarsNieuwenhuizen\EUtilities\AbstractBase;
+use LarsNieuwenhuizen\EUtilities\Interfaces\EUtility;
+use LarsNieuwenhuizen\EUtilities\Interfaces\Query;
+
+final class ESummary extends AbstractBase implements EUtility
+{
+
+    /** @const string */
+    const VERSION_PREVIOUS = '1.0';
+
+    /** @const string */
+    const VERSION_LATEST = '2.0';
+
+    /**
+     * @var string
+     */
+    protected $urlPath = 'esummary.fcgi';
+
+    /**
+     * @var string
+     */
+    protected $database = 'protein';
+
+    /**
+     * @var string
+     */
+    protected $returnMode = 'json';
+
+    /**
+     * @var string
+     */
+    protected $version = self::VERSION_LATEST;
+
+    /**
+     * @param Query $query
+     * @return string
+     */
+    public function execute(Query $query): string
+    {
+
+        $requestUri = $this->getBaseUrl() .
+            '?db=' . $this->getDatabase() .
+            '&retmode=' . $this->getReturnMode() .
+            ($this->getApiKey() ? '&api_key=' . $this->getApiKey() : '') .
+            '&id=' . $query->getQueryString() .
+            '&version=' . $this->getVersion();
+
+        $result = $this->getHttpClient()->get($requestUri)
+            ->getBody()
+            ->getContents();
+
+        return $result;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDatabase(): string
+    {
+        return $this->database;
+    }
+
+    /**
+     * @param string $database
+     * @return ESummary
+     */
+    public function setDatabase(string $database): ESummary
+    {
+        $this->database = $database;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReturnMode(): string
+    {
+        return $this->returnMode;
+    }
+
+    /**
+     * @param string $returnMode
+     * @return ESummary
+     */
+    public function setReturnMode(string $returnMode): ESummary
+    {
+        $this->returnMode = $returnMode;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVersion(): string
+    {
+        return $this->version;
+    }
+
+    /**
+     * @param string $version
+     * @return ESummary
+     */
+    public function setVersion(string $version): ESummary
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+}

@@ -6,7 +6,7 @@ namespace LarsNieuwenhuizen\EUtilities\Esearch;
 use LarsNieuwenhuizen\EUtilities\AbstractBase;
 use LarsNieuwenhuizen\EUtilities\Interfaces;
 
-class ESearch extends AbstractBase implements Interfaces\EUtility
+final class ESearch extends AbstractBase implements Interfaces\EUtility
 {
 
     /**
