@@ -11,7 +11,7 @@
         "phpunit/phpunit": "^7.1",
         "codeclimate/php-test-reporter": "^0.4.4"
     },
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Lars Nieuwenhuizen",
