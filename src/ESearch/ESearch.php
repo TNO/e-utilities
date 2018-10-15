@@ -22,7 +22,17 @@ final class ESearch extends AbstractBase implements Interfaces\EUtility
     /**
      * @var string
      */
-    protected $returnMode = 'json';
+    protected $returnType = 'json';
+
+    /**
+     * @var int
+     */
+    protected $returnMaximum = 20;
+
+    /**
+     * @var int
+     */
+    protected $returnStart =  0;
 
     /**
      * @param Interfaces\Query $query
@@ -32,7 +42,9 @@ final class ESearch extends AbstractBase implements Interfaces\EUtility
     {
         $requestUri = $this->getBaseUrl() .
             '?db=' . $this->getDatabase() .
-            '&retmode=' . $this->getReturnMode() .
+            '&retmode=' . $this->getReturnType() .
+            '&retmax=' . $this->getReturnMaximum() .
+            '&retstart=' . $this->getReturnStart() .
             ($this->getApiKey() ? '&api_key=' . $this->getApiKey() : '') .
             '&term=' . $query->getQueryString();
 
@@ -65,18 +77,56 @@ final class ESearch extends AbstractBase implements Interfaces\EUtility
     /**
      * @return string
      */
-    public function getReturnMode(): string
+    public function getReturnType(): string
     {
-        return $this->returnMode;
+        return $this->returnType;
     }
 
     /**
-     * @param string $returnMode
+     * @param string $returnType
      * @return ESearch
      */
-    public function setReturnMode(string $returnMode): ESearch
+    public function setReturnType(string $returnType): ESearch
     {
-        $this->returnMode = $returnMode;
+        $this->returnType = $returnType;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReturnMaximum(): int
+    {
+        return $this->returnMaximum;
+    }
+
+    /**
+     * @param int $returnMaximum
+     * @return ESearch
+     */
+    public function setReturnMaximum(int $returnMaximum): ESearch
+    {
+        $this->returnMaximum = $returnMaximum;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReturnStart(): int
+    {
+        return $this->returnStart;
+    }
+
+    /**
+     * @param int $returnStart
+     * @return ESearch
+     */
+    public function setReturnStart(int $returnStart): ESearch
+    {
+        $this->returnStart = $returnStart;
 
         return $this;
     }

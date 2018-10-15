@@ -193,11 +193,15 @@ These can be changed if necessary.
 Simply call the setters on the ESearch instance like so:
 
 ```php
-$search = (new ESearch())->setReturnMode('xml')->execute($query);
+$search = (new ESearch())->setReturnType('xml')->execute($query);
 ```
 
 And xml will be returned instead of json. Same goes for all available setters in the ESearch object.
 
+* returnStart (the offset for the results) (default 0)
+* returnMaximum (maximum amount of items returned) (default 20)
+* returnType (json or xml) (default json)
+* database (which database to query) (default pubmed)
 
 ### Note
 Not all pararmeters NCBI supports are implemented in the objects. These will be implemented in time.
