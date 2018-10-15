@@ -31,6 +31,13 @@ At this point in time I've implemented the calls to perform an ESearch call and 
 
 ## How to use
 
+### API Key
+
+As of december 2018 NCBI requires the usage of an api key. 
+You can create one [here](https://www.ncbi.nlm.nih.gov/account/settings/).
+
+Once you've got an api key, add it in your .env file and call it `NCBI_API_KEY`
+
 ### ESearch
 The following example will display a very simple query on ESearch.
 ```php
