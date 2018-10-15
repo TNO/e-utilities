@@ -27,7 +27,7 @@ abstract class AbstractBase implements EUtility
     /**
      * @var string
      */
-    protected $apiKey = '';
+    protected $apiKey;
 
     /**
      * AbstractBase constructor.
@@ -36,6 +36,7 @@ abstract class AbstractBase implements EUtility
     {
         $this->setHttpClient(new Client());
         $this->setBaseUrl($this->getBaseUrl() . $this->getUrlPath());
+        $this->setApiKey(getenv('NCBI_API_KEY') ?: '');
     }
 
     /**
