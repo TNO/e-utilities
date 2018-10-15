@@ -42,7 +42,6 @@ final class ESummary extends AbstractBase implements EUtility
      */
     public function execute(Query $query): string
     {
-
         $requestUri = $this->getBaseUrl() .
             '?db=' . $this->getDatabase() .
             '&retmode=' . $this->getReturnMode() .
