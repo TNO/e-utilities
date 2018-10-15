@@ -5,6 +5,7 @@
 [![Latest Stable Version](https://poser.pugx.org/larsnieuwenhuizen/e-utilities/v/stable)](https://packagist.org/packages/larsnieuwenhuizen/e-utilities)
 [![Latest Unstable Version](https://poser.pugx.org/larsnieuwenhuizen/e-utilities/v/unstable)](https://packagist.org/packages/larsnieuwenhuizen/e-utilities)
 [![License](https://poser.pugx.org/larsnieuwenhuizen/e-utilities/license)](https://packagist.org/packages/larsnieuwenhuizen/e-utilities)
+[![Documentation Status](https://readthedocs.org/projects/e-utilities/badge/?version=latest)](https://e-utilities.readthedocs.io/en/latest/?badge=latest)
 
 # E-Utilities
 
