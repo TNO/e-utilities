@@ -42,6 +42,11 @@ $search = (new ESearch())->execute($query);
 
 return $search;
 ```
+The request uri built and sent to NCBI:
+
+```
+https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&term=medication+AND+asthma
+```
 
 The result will be something like:
 
@@ -144,3 +149,57 @@ The result will be something like:
     }
 }
 ```
+
+### Editing the request
+The objects can be manipulated to serve your needs.
+In the last example you saw a simple request query being built using two terms.
+The term string that the object built was `medication+AND+asthma`;
+This string is used to search through all columns.
+
+#### Search through specific columns?
+```php
+$queryBuilder->addTerm('medication', ['name'])->addTerm('asthma');
+```
+
+The object would now create:
+
+```
+https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&term=medication%5bname%5d+AND+asthma
+```
+
+Looks almost the same, but note the `term=medication%5bname%5d`.
+Now it added the column as a condition.
+
+#### AND or OR clauses?
+
+We just saw the column being added as a condition in the query. But still we got `medication%5bname%5d+AND+asthma`
+What if we need it to be OR?
+
+Again simply use the method arguments like this:
+
+```php
+$queryBuilder->addTerm('medication', ['name'])->addTerm('asthma', [], 'OR');
+```
+
+Note the last addTerm, it doesn't add any column restrictions, but the third parameter changes to 'OR'.
+Which in return results in the query string:
+`&term=medication%5bname%5d+OR+asthma`.
+
+### Change something in the ESearch settings
+
+When you take a look at the ESearch object, you'll see the default database is set to pubmed. The return type is default set to json.
+These can be changed if necessary.
+
+Simply call the setters on the ESearch instance like so:
+
+```php
+$search = (new ESearch())->setReturnMode('xml')->execute($query);
+```
+
+And xml will be returned instead of json. Same goes for all available setters in the ESearch object.
+
+
+### Note
+Not all pararmeters NCBI supports are implemented in the objects. These will be implemented in time.
+For the current state either take a look in the code. Or check the documentation later this year.
+I'll try to work on it as much as I can.
