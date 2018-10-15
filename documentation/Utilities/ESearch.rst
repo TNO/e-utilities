@@ -160,3 +160,42 @@ To change these in your application you can do the following. ::
 Now the parameters have changed an the request will be sent as such.
 So in this case, the database we're querying is "differentDatabase", we'll be getting a maximum of 500 results with an
 offset of 15 in XML format.
+
+Changing the query
+==================
+
+You can also change the query string of course.
+The top example showed a string being built which would come to look something like this: ::
+
+    &term=medication+AND+asthma
+
+This is fine if we want to do a search on all columns for the match of medication and astma.
+But what if we want to search for anything containing medication OR asthma.
+
+the ->addTerm() method has 3 parameters
+
+* Term (string | required)
+* Columns (array | optional | default empty)
+* Clause (string | optional | default "AND")
+
+.. code::
+
+    ->addTerm('medication')->addTerm('asthma', [], 'OR')
+
+Will create ::
+
+    &term=medication+OR+asthma
+
+Note the OR, we've changed the third parameter to OR, and thus the query becomes an or.
+Changing the clause of the first term does not have any effect since the clause of the first term is not used.
+There is no OR or AND with only 1 term.
+
+.. code::
+
+    ->addTerm('medication')->addTerm('asthma', ['name'], 'OR')
+
+Will create ::
+
+    &term=medication+OR+asthma%5bname%5d
+
+Now the second term is set to only search in the column name.
