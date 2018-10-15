@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace LarsNieuwenhuizen\EUtilities\Esearch;
+namespace LarsNieuwenhuizen\EUtilities\ESearch;
 
 use LarsNieuwenhuizen\EUtilities\AbstractBase;
 use LarsNieuwenhuizen\EUtilities\Interfaces;
