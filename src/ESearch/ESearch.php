@@ -4,9 +4,10 @@ declare(strict_types=1);
 namespace LarsNieuwenhuizen\EUtilities\ESearch;
 
 use LarsNieuwenhuizen\EUtilities\AbstractBase;
-use LarsNieuwenhuizen\EUtilities\Interfaces;
+use LarsNieuwenhuizen\EUtilities\Interfaces\EUtility;
+use LarsNieuwenhuizen\EUtilities\Interfaces\Query;
 
-final class ESearch extends AbstractBase implements Interfaces\EUtility
+final class ESearch extends AbstractBase implements EUtility
 {
 
     /**
@@ -35,10 +36,10 @@ final class ESearch extends AbstractBase implements Interfaces\EUtility
     protected $returnStart =  0;
 
     /**
-     * @param Interfaces\Query $query
+     * @param Query $query
      * @return string
      */
-    public function execute(Interfaces\Query $query): string
+    public function execute(Query $query): string
     {
         $requestUri = $this->getBaseUrl() .
             '?db=' . $this->getDatabase() .
