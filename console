@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use LarsNieuwenhuizen\EUtilities\Commands\CreateUtilityCommand;
+use Symfony\Component\Console\Application;
+
+$application = new Application('E-Utilities php development console');
+
+$commands = [
+    new CreateUtilityCommand()
+];
+
+$application->addCommands($commands);
+
+$application->run();
+exit;

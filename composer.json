@@ -27,7 +27,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "LarsNieuwenhuizen\\EUtilities\\Tests\\": "tests/"
+            "LarsNieuwenhuizen\\EUtilities\\Tests\\": "tests/",
+            "LarsNieuwenhuizen\\EUtilities\\Commands\\": "development/Commands/",
+            "LarsNieuwenhuizen\\EUtilities\\Services\\": "development/Services/"
         }
     }
 }
