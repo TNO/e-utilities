@@ -9,13 +9,6 @@ Welcome to E-utilities's documentation!
 This documentation will serve as a guide on how to use the E-utilites php library.
 It will not thoroughly discuss the NCBI E-utilities itself.
 
-E-Utilities
------------
-
-NCBI has created a HTTP API to query data against their databases. There are a few different utilities you can use.
-The details for every utility is decribed `here`__.
-
-__ https://www.ncbi.nlm.nih.gov/books/NBK25499/
 
 .. toctree::
    :maxdepth: 2
@@ -24,6 +17,14 @@ __ https://www.ncbi.nlm.nih.gov/books/NBK25499/
    Installation/*
    Usage/*
    Utilities/*
+
+E-Utilities
+-----------
+
+NCBI has created a HTTP API to query data against their databases. There are a few different utilities you can use.
+The details for every utility is decribed `here`__.
+
+__ https://www.ncbi.nlm.nih.gov/books/NBK25499/
 
 Current state of the php library
 --------------------------------
