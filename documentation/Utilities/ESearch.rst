@@ -1,4 +1,3 @@
-=======
 ESearch
 =======
 
@@ -7,7 +6,7 @@ With `ESearch`_ we can query the database and retrieve a list of UIDs matching a
 .. _ESearch: https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.ESearch
 
 Basic example
-=============
+-------------
 
 The following example will display a very simple query on ESearch.
 
@@ -138,7 +137,7 @@ Which gives a result similar to this: ::
 
 
 ESearch parameters
-==================
+------------------
 
 ESearch itself has multiple parameters that can change the result.
 
@@ -162,7 +161,7 @@ So in this case, the database we're querying is "differentDatabase", we'll be ge
 offset of 15 in XML format.
 
 Changing the query
-==================
+------------------
 
 You can also change the query string of course.
 The top example showed a string being built which would come to look something like this: ::

@@ -1,9 +1,8 @@
-============
 Installation
 ============
 
 Composer
-========
+--------
 
 To install this library in your php project simply use composer.
 In your project run the following composer command::

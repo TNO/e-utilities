@@ -22,6 +22,7 @@ __ https://www.ncbi.nlm.nih.gov/books/NBK25499/
    :glob:
 
    Installation/*
+   Usage/*
    Utilities/*
 
 Current state of the php library
