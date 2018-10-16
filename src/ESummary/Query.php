@@ -49,5 +49,7 @@ class Query implements Interfaces\Query
         $uids = $this->getUids();
         $uids[] = $uid;
         $this->setUids($uids);
+
+        return $this;
     }
 }
