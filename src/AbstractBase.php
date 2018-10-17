@@ -10,9 +10,19 @@ abstract class AbstractBase implements EUtility
 {
 
     /**
+     * @const string
+     */
+    const BASE_URL = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+
+    /**
+     * @const string
+     */
+    const URL_PATH = '';
+
+    /**
      * @var string
      */
-    protected $baseUrl = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+    protected $requestUri;
 
     /**
      * @var string
@@ -31,50 +41,17 @@ abstract class AbstractBase implements EUtility
 
     /**
      * AbstractBase constructor.
+     * @throws \Exception
      */
     public function __construct()
     {
+        if ($this::URL_PATH === '') {
+            throw new \Exception('URL path for utility not set');
+        }
+
         $this->setHttpClient(new Client());
-        $this->setBaseUrl($this->getBaseUrl() . $this->getUrlPath());
+        $this->setRequestUri(self::BASE_URL . self::URL_PATH);
         $this->setApiKey(getenv('NCBI_API_KEY') ?: '');
-    }
-
-    /**
-     * @return string
-     */
-    public function getBaseUrl(): string
-    {
-        return $this->baseUrl;
-    }
-
-    /**
-     * @param string $baseUrl
-     * @return EUtility
-     */
-    public function setBaseUrl($baseUrl): EUtility
-    {
-        $this->baseUrl = $baseUrl;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrlPath(): string
-    {
-        return $this->urlPath;
-    }
-
-    /**
-     * @param string $urlPath
-     * @return EUtility
-     */
-    public function setUrlPath($urlPath): EUtility
-    {
-        $this->urlPath = $urlPath;
-
-        return $this;
     }
 
     /**
@@ -111,6 +88,25 @@ abstract class AbstractBase implements EUtility
     public function setApiKey(string $apiKey): EUtility
     {
         $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestUri(): string
+    {
+        return $this->requestUri;
+    }
+
+    /**
+     * @param string $requestUri
+     * @return EUtility
+     */
+    public function setRequestUri(string $requestUri): EUtility
+    {
+        $this->requestUri = $requestUri;
 
         return $this;
     }

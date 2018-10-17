@@ -10,10 +10,8 @@ use LarsNieuwenhuizen\EUtilities\Interfaces\Query;
 final class EInfo extends AbstractBase implements EUtility
 {
 
-    /**
-     * @var string
-     */
-    protected $urlPath = 'einfo.fcgi';
+    /** @const string */
+    const URL_PATH = 'einfo.fcgi';
 
     /**
      * @var string
@@ -37,7 +35,7 @@ final class EInfo extends AbstractBase implements EUtility
     public function execute(Query $query = null): string
     {
         $result = $this->httpClient->get(
-            $this->getBaseUrl() .
+            $this->getRequestUri() .
             '?db=' . $this->getDb() .
             '&retmode=' . $this->getReturnType() .
             '&version=' . $this->getVersion()

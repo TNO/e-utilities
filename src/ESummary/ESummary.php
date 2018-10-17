@@ -16,10 +16,8 @@ final class ESummary extends AbstractBase implements EUtility
     /** @const string */
     const VERSION_LATEST = '2.0';
 
-    /**
-     * @var string
-     */
-    protected $urlPath = 'esummary.fcgi';
+    /** @const string */
+    const URL_PATH = 'esummary.fcgi';
 
     /**
      * @var string
@@ -42,7 +40,7 @@ final class ESummary extends AbstractBase implements EUtility
      */
     public function execute(Query $query): string
     {
-        $requestUri = $this->getBaseUrl() .
+        $requestUri = $this->getRequestUri() .
             '?db=' . $this->getDatabase() .
             '&retmode=' . $this->getReturnMode() .
             ($this->getApiKey() ? '&api_key=' . $this->getApiKey() : '') .

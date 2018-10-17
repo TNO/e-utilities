@@ -7,13 +7,13 @@ use LarsNieuwenhuizen\EUtilities\AbstractBase;
 use LarsNieuwenhuizen\EUtilities\Interfaces\EUtility;
 use LarsNieuwenhuizen\EUtilities\Interfaces\Query;
 
-class ESearch extends AbstractBase implements EUtility
+final class ESearch extends AbstractBase implements EUtility
 {
 
     /**
      * @var string
      */
-    protected $urlPath = 'esearch.fcgi';
+    const URL_PATH = 'esearch.fcgi';
 
     /**
      * @var string
@@ -41,7 +41,7 @@ class ESearch extends AbstractBase implements EUtility
      */
     public function execute(Query $query): string
     {
-        $requestUri = $this->getBaseUrl() .
+        $requestUri = $this->getRequestUri() .
             '?db=' . $this->getDatabase() .
             '&retmode=' . $this->getReturnType() .
             '&retmax=' . $this->getReturnMaximum() .
