@@ -50,7 +50,7 @@ abstract class AbstractBase implements EUtility
         }
 
         $this->setHttpClient(new Client());
-        $this->setRequestUri(self::BASE_URL . self::URL_PATH);
+        $this->setRequestUri(self::BASE_URL . $this::URL_PATH);
         $this->setApiKey(getenv('NCBI_API_KEY') ?: '');
     }
 
