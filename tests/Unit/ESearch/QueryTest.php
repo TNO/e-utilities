@@ -1,9 +1,9 @@
 <?php
 
-namespace LarsNieuwenhuizen\EUtilities\Esearch\Tests\ESearch;
+namespace LarsNieuwenhuizen\EUtilities\ESearch\Tests\ESearch;
 
-use LarsNieuwenhuizen\EUtilities\Esearch\Query;
-use LarsNieuwenhuizen\EUtilities\Esearch\Term;
+use LarsNieuwenhuizen\EUtilities\ESearch\Query;
+use LarsNieuwenhuizen\EUtilities\ESearch\Term;
 use PHPUnit\Framework\TestCase;
 
 class QueryTest extends TestCase
@@ -59,5 +59,24 @@ class QueryTest extends TestCase
         $this->subject->addTerm($term3);
         $queryString = $this->subject->getQueryString();
         $this->assertEquals('Hello world+AND+Hello universe+OR+Hello multiverse%5bfirst/second%5d', $queryString);
+    }
+
+    /**
+     * @test
+     */
+    public function settingWrongTermClauseGeneratesException()
+    {
+        $this->expectException(\Exception::class);
+        $item = new Term('Test', []);
+        $item->setClauseType('WRONG');
+    }
+
+    /**
+     * @test
+     */
+    public function settingWrongTermClauseOnConstructCatchesException()
+    {
+        $this->expectException(\TypeError::class);
+        return new Term('test', [], 'WRONG');
     }
 }

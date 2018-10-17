@@ -43,7 +43,7 @@ class Term
             $this->setTerm($term);
             $this->setColumns($columns);
         } catch (\Exception $exception) {
-            return 'Term could not be constructed because: ' . $exception->getMessage();
+            throw new \TypeError('Term could not be constructed because: ' . $exception->getMessage());
         }
     }
 

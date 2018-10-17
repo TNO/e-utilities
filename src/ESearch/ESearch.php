@@ -7,7 +7,7 @@ use LarsNieuwenhuizen\EUtilities\AbstractBase;
 use LarsNieuwenhuizen\EUtilities\Interfaces\EUtility;
 use LarsNieuwenhuizen\EUtilities\Interfaces\Query;
 
-final class ESearch extends AbstractBase implements EUtility
+class ESearch extends AbstractBase implements EUtility
 {
 
     /**
