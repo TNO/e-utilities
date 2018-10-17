@@ -27,7 +27,7 @@ final class ESummary extends AbstractBase implements EUtility
     /**
      * @var string
      */
-    protected $returnMode = 'json';
+    protected $returnType = 'json';
 
     /**
      * @var string
@@ -42,7 +42,7 @@ final class ESummary extends AbstractBase implements EUtility
     {
         $requestUri = $this->getRequestUri() .
             '?db=' . $this->getDatabase() .
-            '&retmode=' . $this->getReturnMode() .
+            '&retmode=' . $this->getReturnType() .
             ($this->getApiKey() ? '&api_key=' . $this->getApiKey() : '') .
             '&id=' . $query->getQueryString() .
             '&version=' . $this->getVersion();
@@ -76,18 +76,18 @@ final class ESummary extends AbstractBase implements EUtility
     /**
      * @return string
      */
-    public function getReturnMode(): string
+    public function getReturnType(): string
     {
-        return $this->returnMode;
+        return $this->returnType;
     }
 
     /**
-     * @param string $returnMode
+     * @param string $returnType
      * @return ESummary
      */
-    public function setReturnMode(string $returnMode): ESummary
+    public function setReturnType(string $returnType): ESummary
     {
-        $this->returnMode = $returnMode;
+        $this->returnType = $returnType;
 
         return $this;
     }

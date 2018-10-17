@@ -8,6 +8,7 @@ use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Stream;
 use LarsNieuwenhuizen\EUtilities\ESearch\ESearch;
 use LarsNieuwenhuizen\EUtilities\ESearch\Query;
+use LarsNieuwenhuizen\EUtilities\Tests\Unit\ESearch\ESearchDummy;
 use PHPUnit\Framework\TestCase;
 
 class ESearchTest extends TestCase
@@ -19,9 +20,10 @@ class ESearchTest extends TestCase
     protected $subject;
 
     /**
+     * @throws \Exception
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->subject = new ESearch();
         parent::setUp();
@@ -30,7 +32,7 @@ class ESearchTest extends TestCase
     /**
      * @test
      */
-    public function getReturnTypeReturnsSetType()
+    public function getReturnTypeReturnsSetType(): void
     {
         $this->subject->setReturnType('xml');
         $this->assertEquals('xml', $this->subject->getReturnType());
@@ -39,7 +41,7 @@ class ESearchTest extends TestCase
     /**
      * @test
      */
-    public function getDatabaseReturnsSetDatabase()
+    public function getDatabaseReturnsSetDatabase(): void
     {
         $this->subject->setDatabase('testing');
         $this->assertEquals('testing', $this->subject->getDatabase());
@@ -48,7 +50,7 @@ class ESearchTest extends TestCase
     /**
      * @test
      */
-    public function getReturnMaximumReturnsSetMaximum()
+    public function getReturnMaximumReturnsSetMaximum(): void
     {
         $this->subject->setReturnMaximum(5016);
         $this->assertEquals(5016, $this->subject->getReturnMaximum());
@@ -57,7 +59,7 @@ class ESearchTest extends TestCase
     /**
      * @test
      */
-    public function getReturnStartReturnsSetReturnStart()
+    public function getReturnStartReturnsSetReturnStart(): void
     {
         $this->subject->setReturnStart(10);
         $this->assertEquals(10, $this->subject->getReturnStart());
@@ -66,7 +68,7 @@ class ESearchTest extends TestCase
     /**
      * @test
      */
-    public function executeAddsAllNecessaryParametersToTheQuery()
+    public function executeAddsAllNecessaryParametersToTheQuery(): void
     {
         $queryMock = $this->createMock(Query::class);
         $responseMock = $this->createMock(Response::class);
@@ -83,5 +85,15 @@ class ESearchTest extends TestCase
         $messageMock->expects($this->once())->method('getContents')->willReturn('{}');
 
         $this->subject->execute($queryMock);
+    }
+
+    /**
+     * @test
+     */
+    public function exceptionIsThrownWhenUrlPathIsConstantNotSet(): void
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('URL path for utility not set');
+        new ESearchDummy();
     }
 }

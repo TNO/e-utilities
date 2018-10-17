@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace LarsNieuwenhuizen\EUtilities\Tests\Unit\EInfo;
+namespace LarsNieuwenhuizen\EUtilities\Tests\Unit\ESummary;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Stream;
-use LarsNieuwenhuizen\EUtilities\EInfo\EInfo;
+use LarsNieuwenhuizen\EUtilities\ESummary\ESummary;
+use LarsNieuwenhuizen\EUtilities\ESummary\Query;
 use PHPUnit\Framework\TestCase;
 
-class EInfoTest extends TestCase
+class ESummaryTest extends TestCase
 {
 
     /**
-     * @var EInfo
+     * @var ESummary
      */
     protected $subject;
 
@@ -21,19 +22,19 @@ class EInfoTest extends TestCase
      * @throws \Exception
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->subject = new EInfo();
+        $this->subject = new ESummary();
         parent::setUp();
     }
 
     /**
      * @test
      */
-    public function getDbReturnsSetDb()
+    public function getDatabaseReturnsSetDatabase()
     {
-        $this->subject->setDb('testDb');
-        $this->assertEquals('testDb', $this->subject->getDb());
+        $this->subject->setDatabase('pubmed');
+        $this->assertEquals('pubmed', $this->subject->getDatabase());
     }
 
     /**
@@ -59,6 +60,7 @@ class EInfoTest extends TestCase
      */
     public function executeReturnsTheHttpResult()
     {
+        $queryMock = $this->createMock(Query::class);
         $responseMock = $this->createMock(Response::class);
         $messageMock = $this->createMock(Stream::class);
         $httpClientMock = $this->getMockBuilder(Client::class)
@@ -70,7 +72,8 @@ class EInfoTest extends TestCase
         $httpClientMock->expects($this->once())->method('get')->willReturn($responseMock);
         $responseMock->expects($this->once())->method('getBody')->willReturn($messageMock);
         $messageMock->expects($this->once())->method('getContents')->willReturn('{}');
+        $queryMock->expects($this->once())->method('getQueryString');
 
-        $this->subject->execute();
+        $this->subject->execute($queryMock);
     }
 }
