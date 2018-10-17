@@ -28,7 +28,11 @@ __ https://www.ncbi.nlm.nih.gov/books/NBK25499/
 Current state of the php library
 --------------------------------
 
-At this point in time I've implemented the calls to perform an ESearch call and an ESummary call
+At this point in time I've implemented the calls to use:
+
+* EInfo
+* ESearch
+* ESummary
 
 API Key
 -------
