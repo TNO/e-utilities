@@ -34,7 +34,7 @@ class CreateUtilityCommand extends Command
             '',
         ]);
         $directoryCreated = $this->createDirectory($input->getArgument('name'));
-        if ($directoryCreated ) {
+        if ($directoryCreated) {
             $output->writeln([
                 '<info>Directory created!</info>',
                 ''
