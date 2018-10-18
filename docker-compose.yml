@@ -10,7 +10,7 @@ services:
     image: nginx:alpine
     volumes:
       - ./:/var/www/html
-      - ./demo/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./public/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - 4567:80
     restart: on-failure
